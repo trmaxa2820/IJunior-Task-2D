@@ -11,10 +11,7 @@ public class Coin : MonoBehaviour
         {
             Destroy(gameObject);
             player.AddCoin();
-            if(player.AmountCoin() == 10)
-            {
-                Debug.Log("You Win!");
-            }
+            player.Action();
         }
     }
 }

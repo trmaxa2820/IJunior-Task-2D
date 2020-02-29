@@ -21,20 +21,16 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        if (_player.IsAlive())
+        if (_player.IsAlive)
         {
             if (Input.GetKey(KeyCode.D))
             {
-                transform.Translate(_speed * Time.deltaTime, 0, 0);
-                _spriteRenderer2D.flipX = false;
-                _animator.SetTrigger("MoveRight");
+                Move(_speed, false, "MoveRight");
             }
 
             if (Input.GetKey(KeyCode.A))
             {
-                transform.Translate(-_speed * Time.deltaTime, 0, 0);
-                _spriteRenderer2D.flipX = true;
-                _animator.SetTrigger("MoveLeft");
+                Move(-_speed, true, "MoveLeft");
             }
 
             if (Input.GetKeyDown(KeyCode.Space) && _isGround)
@@ -52,6 +48,13 @@ public class Movement : MonoBehaviour
         {
             Debug.Log("Player Dead");
         }
+    }
+
+    private void Move(float speed, bool flipX, string animationTrigger)
+    {
+        transform.Translate(speed * Time.deltaTime, 0, 0);
+        _spriteRenderer2D.flipX = flipX;
+        _animator.SetTrigger(animationTrigger);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
