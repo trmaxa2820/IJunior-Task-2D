@@ -24,15 +24,11 @@ public class Player : MonoBehaviour
     public void AddCoin()
     {
         _amountCoinToWin++;
+        _changedCoin?.Invoke();
     }
 
     public int AmountCoin()
     {
         return _amountCoinToWin;
-    }
-
-    public void Action()
-    {
-        _changedCoin?.Invoke();
     }
 }

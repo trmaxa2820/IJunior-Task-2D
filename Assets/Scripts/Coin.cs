@@ -11,7 +11,6 @@ public class Coin : MonoBehaviour
         {
             Destroy(gameObject);
             player.AddCoin();
-            player.Action();
         }
     }
 }
